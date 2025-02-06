@@ -6,13 +6,13 @@ import com.dedany.baseprojectwithfirebase.domain.entities.Car
 
 interface CarRepository {
 
-    suspend fun getAllCars(): CarResponseDto
+    suspend fun getAllCars(): List<Car>
 
-    suspend fun getCarById(id: Int): CarDto
+    suspend fun getCarById(id: Int): Car
 
-    suspend fun deleteCarByIdAndGetIsSuccess(id: Int): CarDto
+    suspend fun deleteCarByIdAndGetIsSuccess(id: Int): Boolean
 
-    suspend fun updateCarInformationById(id: Int): CarDto
+    suspend fun updateCarInformationById(id: Int): Boolean
 
-    suspend fun getCarsByBrand(Brand: String): List<CarDto>
+    suspend fun getCarsByBrand(Brand: String): List<Car>
 }
