@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "870368939766",
+    "project_id": "base-project-with-firebase1",
+    "storage_bucket": "base-project-with-firebase1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870368939766:android:38bac1bd1c6bd3b3a766d7",
+        "android_client_info": {
+          "package_name": "com.dedany.baseprojectwithfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfDCSKN2kgkXSPcwI6o7FNIEfYykOpA50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
