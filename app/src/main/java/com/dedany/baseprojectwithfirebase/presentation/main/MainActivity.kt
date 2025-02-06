@@ -1,4 +1,4 @@
-package com.dedany.baseprojectwithfirebase
+package com.dedany.baseprojectwithfirebase.presentation.main
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
