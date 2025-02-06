@@ -21,5 +21,6 @@ private var binding: ActivityMainBinding? = null
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         setContentView(binding?.root)
 
+
     }
 }
