@@ -10,12 +10,14 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 
-@Module@InstallIn(SingletonComponent::class)
+@Module
+@InstallIn(SingletonComponent::class)
 object UseCaseModule {
-}
 
-@Provides
-@Singleton
-fun provideCarUseCase(repository: CarRepository): CarUseCase {
-    return CarUseCaseImpl(repository)
+
+    @Provides
+    @Singleton
+    fun provideCarUseCase(repository: CarRepository): CarUseCase {
+        return CarUseCaseImpl(repository)
+    }
 }

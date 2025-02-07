@@ -1,5 +1,6 @@
 package com.dedany.baseprojectwithfirebase.di
 
+import android.app.Application
 import android.content.Context
 import com.dedany.baseprojectwithfirebase.data.dataSource.local.car.dao.CarDao
 import com.dedany.baseprojectwithfirebase.data.dataSource.local.room.Roomdb
@@ -11,12 +12,12 @@ import javax.inject.Singleton
 
 
 @Module
-    @InstallIn(SingletonComponent::class)
-    object RoomModule {
+@InstallIn(SingletonComponent::class)
+object RoomModule {
 
     @Provides
     @Singleton
-    fun provideRoomDatabase(application: Context): Roomdb {
+    fun provideRoomDatabase(application: Application): Roomdb {
         return Roomdb.invoke(application)
     }
 
