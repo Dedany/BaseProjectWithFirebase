@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.dedany.baseprojectwithfirebase.databinding.ActivityMainBinding
+import com.dedany.baseprojectwithfirebase.databinding.ActivityHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -17,7 +17,7 @@ private var binding: ActivityHomeBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding= ActivityHomeBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this)[HomeActivityViewModel::class.java]
         setContentView(binding?.root)
 

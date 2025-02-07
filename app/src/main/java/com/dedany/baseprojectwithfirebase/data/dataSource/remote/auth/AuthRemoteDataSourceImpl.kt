@@ -5,13 +5,16 @@ import com.dedany.baseprojectwithfirebase.data.dataSource.remote.auth.dto.UserDt
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import javax.inject.Inject
+import kotlin.coroutines.suspendCoroutine
 
 class AuthRemoteDataSourceImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore
 ) : AuthRemoteDataSource {
     override fun login(loginDto: LoginDto): LoginDto {
-        TODO("Not yet implemented")
+        return suspendCoroutine { result ->
+            auth.signInWithEmailAndPassword(loginDto.user, loginDto.password)
+        }
     }
 
     override fun logout(): Boolean {
