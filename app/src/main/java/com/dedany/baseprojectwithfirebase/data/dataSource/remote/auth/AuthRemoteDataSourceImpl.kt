@@ -11,9 +11,11 @@ class AuthRemoteDataSourceImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val firestore: FirebaseFirestore
 ) : AuthRemoteDataSource {
-    override fun login(loginDto: LoginDto): LoginDto {
+    override suspend fun login(loginDto: LoginDto): LoginDto {
         return suspendCoroutine { result ->
-            auth.signInWithEmailAndPassword(loginDto.user, loginDto.password)
+            auth.signInWithEmailAndPassword(loginDto.user, loginDto.password).addOnCompleteListener {
+
+            }
         }
     }
 

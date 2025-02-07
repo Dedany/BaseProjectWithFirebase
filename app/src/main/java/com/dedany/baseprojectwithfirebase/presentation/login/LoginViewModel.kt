@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
 
-    private var _isLoginSuccess = MutableLiveData<Boolean> = MutableLiveData()
+    private var _isLoginSuccess: MutableLiveData<Boolean> = MutableLiveData()
      val isLoginSuccess: LiveData<Boolean> = _isLoginSuccess
 
     private var email: String = ""

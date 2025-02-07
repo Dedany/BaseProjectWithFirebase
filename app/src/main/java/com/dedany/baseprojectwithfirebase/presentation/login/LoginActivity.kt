@@ -1,5 +1,6 @@
 package com.dedany.baseprojectwithfirebase.presentation.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.dedany.baseprojectwithfirebase.databinding.ActivityLoginBinding
+import com.dedany.baseprojectwithfirebase.presentation.home.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,28 +30,28 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initObservers() {
-        binding?.isLoginSuccess?.observe(this)
-        if (isSuccess) {
-            startActivity(Intent(this, HomeActivity::class.java))
+        viewModel?.isLoginSuccess?.observe(this) { isSuccess ->
+            if (isSuccess) {
+                startActivity(Intent(this, HomeActivity::class.java))
 
-    }else {
-        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-    }
-}
-}
-
-
-private fun initListener() {
-    binding?.etEmail?.doOnTextChanged { text, star, before, count ->
-        viewModel.setEmail(text.toString())
-    }
-    binding?.etPassword?.doOnTextChanged { text, star, before, count ->
-        viewModel.setPassword(text.toString())
+            } else {
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
-    binding?.btnLogin?.doOnTextChanged { text, star, before, count ->
-        viewModel?.login()
-    }
 
-}
+    private fun initListener() {
+        binding?.etEmail?.doOnTextChanged { text, star, before, count ->
+            viewModel?.setEmail(text.toString())
+        }
+        binding?.etPassword?.doOnTextChanged { text, star, before, count ->
+            viewModel?.setPassword(text.toString())
+        }
+
+        binding?.btnLogin?.doOnTextChanged { text, star, before, count ->
+            viewModel?.login()
+        }
+
+    }
 }

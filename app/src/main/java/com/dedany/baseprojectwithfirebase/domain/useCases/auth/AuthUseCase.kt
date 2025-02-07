@@ -2,5 +2,5 @@ package com.dedany.baseprojectwithfirebase.domain.useCases.auth
 
 interface AuthUseCase {
 
-suspend fun login()
+suspend fun login(email: String, password: String) : Boolean
 }
