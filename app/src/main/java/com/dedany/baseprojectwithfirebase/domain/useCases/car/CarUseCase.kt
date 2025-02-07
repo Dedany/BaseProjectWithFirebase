@@ -1,4 +1,4 @@
-package com.dedany.baseprojectwithfirebase.domain.useCases
+package com.dedany.baseprojectwithfirebase.domain.useCases.car
 
 import com.dedany.baseprojectwithfirebase.domain.entities.Car
 
