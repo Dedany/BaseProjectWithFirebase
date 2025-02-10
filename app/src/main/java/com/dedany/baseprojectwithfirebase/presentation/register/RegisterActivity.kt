@@ -22,5 +22,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         viewModel = ViewModelProvider(this)[RegisterActivityViewModel::class.java]
          setContentView(binding?.root)
+
+        binding?.btnRegister?.setOnClickListener {
     }
 }

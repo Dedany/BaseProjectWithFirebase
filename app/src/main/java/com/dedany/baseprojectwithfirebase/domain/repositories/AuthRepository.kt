@@ -4,7 +4,7 @@ import com.dedany.baseprojectwithfirebase.data.dataSource.remote.auth.dto.UserDt
 
 interface AuthRepository {
 
-    suspend fun login (email: String, password: String): Boolean
+    fun login (email: String, password: String): Boolean
 
     suspend fun logout(): Boolean
 

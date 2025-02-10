@@ -38,6 +38,9 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
             }
         }
+        viewModel?.canDoLogin?.observe(this) { isEnabled ->
+            binding?.btnLogin?.isEnabled = isEnabled
+        }
     }
 
 
@@ -55,3 +58,4 @@ class LoginActivity : AppCompatActivity() {
 
     }
 }
+
