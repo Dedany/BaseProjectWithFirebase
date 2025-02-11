@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import com.dedany.baseprojectwithfirebase.databinding.ActivityLoginBinding
 import com.dedany.baseprojectwithfirebase.presentation.home.HomeActivity
+import com.dedany.baseprojectwithfirebase.presentation.register.RegisterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -41,6 +42,8 @@ class LoginActivity : AppCompatActivity() {
         viewModel?.canDoLogin?.observe(this) { isEnabled ->
             binding?.btnLogin?.isEnabled = isEnabled
         }
+
+
     }
 
 
@@ -54,6 +57,13 @@ class LoginActivity : AppCompatActivity() {
 
         binding?.btnLogin?.doOnTextChanged { text, star, before, count ->
             viewModel?.login()
+        }
+
+        binding?.tvRegister?.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
+        }
+        binding?.btnLogin?.setOnClickListener {
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
 
     }

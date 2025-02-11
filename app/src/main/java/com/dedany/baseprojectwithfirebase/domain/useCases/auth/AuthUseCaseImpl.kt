@@ -9,7 +9,7 @@ class AuthUseCaseImpl @Inject constructor(private val repository: AuthRepository
         return repository.login(email, password)
     }
 
-    override  fun isEmailFormatValid(email: String): Boolean {
+    override fun isEmailFormatValid(email: String): Boolean {
         if (email.isNullOrEmpty()) {
             return false
         }
@@ -20,17 +20,54 @@ class AuthUseCaseImpl @Inject constructor(private val repository: AuthRepository
     }
 
 
-    override  fun isPasswordFormatValid(password: String): Boolean {
+    override fun isPasswordFormatValid(password: String): Boolean {
         if (password.isNullOrEmpty()) {
             return false
         }
-        if (password.matches("^(?=.{8,})(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[/:()&@?!'\\[\\]\"\${}#%^*+=_¿¡|<>`£¥€~-]).*\$".toRegex())){
+        if (password.matches("^(?=.{8,})(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z])(?=.*[/:()&@?!'\\[\\]\"\${}#%^*+=_¿¡|<>`£¥€~-]).*\$".toRegex())) {
             return true
+        }
+        return false
     }
-    return false
-}
 
-override  fun isLoginFormValid(email: String, password: String): Boolean {
-    return isEmailFormatValid(email) && isPasswordFormatValid(password)
-}
+    override fun isLoginFormValid(email: String, password: String): Boolean {
+        return isEmailFormatValid(email) && isPasswordFormatValid(password)
+    }
+
+
+    override fun isNameValid(name: String): Boolean {
+        return !(name.isNotBlank() && name.length <= 50)
+    }
+
+    override fun isAgeValid(age: Int): Boolean {
+        return (age in 1..150)
+    }
+
+    override fun isAPasswordMatching(password: String, repeatPassword: String): Boolean {
+        return password != repeatPassword && repeatPassword.isNotBlank()
+    }
+
+    override suspend fun register(
+        name: String,
+        age: Int,
+        email: String,
+        country: String,
+        password: String
+    ): Boolean {
+       return repository.register(name, age, email, country, password)
+    }
+
+
+    override fun isRegisterFormValid(
+        name: String,
+        age: Int,
+        email: String,
+        country: String,
+        password: String,
+        repeatPassword: String
+    ): Boolean {
+        return isNameValid(name) && isAgeValid(age.toInt()) && isEmailFormatValid(email) && isPasswordFormatValid(password) && isAPasswordMatching(password, repeatPassword)
+    }
+
+
 }

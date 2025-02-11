@@ -6,9 +6,7 @@ import com.dedany.baseprojectwithfirebase.data.dataSource.remote.auth.dto.UserDt
 interface AuthRemoteDataSource {
 
     suspend fun login(loginDto: LoginDto): LoginDto
-
     fun logout(): Boolean
-
-    fun register(userDto: UserDto): UserDto
+    suspend fun register(userDto: UserDto): Pair<Boolean, String>
 
 }
