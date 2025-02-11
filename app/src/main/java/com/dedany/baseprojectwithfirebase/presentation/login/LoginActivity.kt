@@ -53,10 +53,7 @@ class LoginActivity : AppCompatActivity() {
         }
         binding?.etPassword?.doOnTextChanged { text, star, before, count ->
             viewModel?.setPassword(text.toString())
-        }
 
-        binding?.btnLogin?.doOnTextChanged { text, star, before, count ->
-            viewModel?.login()
         }
 
         binding?.tvRegister?.setOnClickListener {
