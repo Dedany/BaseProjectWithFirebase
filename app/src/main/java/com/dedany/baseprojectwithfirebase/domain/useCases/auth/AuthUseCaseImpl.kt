@@ -36,15 +36,16 @@ class AuthUseCaseImpl @Inject constructor(private val repository: AuthRepository
 
 
     override fun isNameValid(name: String): Boolean {
-        return !(name.isNotBlank() && name.length <= 50)
+        return name.isNotBlank() && name.length <= 50
     }
 
     override fun isAgeValid(age: Int): Boolean {
-        return (age in 1..150)
+        return age in 1..150
     }
 
-    override fun isAPasswordMatching(password: String, repeatPassword: String): Boolean {
-        return password != repeatPassword && repeatPassword.isNotBlank()
+    override fun isPasswordMatching(password: String, repeatPassword: String): Boolean {
+        val passwordMatches = password == repeatPassword
+        return passwordMatches
     }
 
     override suspend fun register(
@@ -54,7 +55,7 @@ class AuthUseCaseImpl @Inject constructor(private val repository: AuthRepository
         country: String,
         password: String
     ): Boolean {
-       return repository.register(name, age, email, country, password)
+        return repository.register(name, age, email, country, password)
     }
 
 
@@ -66,7 +67,11 @@ class AuthUseCaseImpl @Inject constructor(private val repository: AuthRepository
         password: String,
         repeatPassword: String
     ): Boolean {
-        return isNameValid(name) && isAgeValid(age.toInt()) && isEmailFormatValid(email) && isPasswordFormatValid(password) && isAPasswordMatching(password, repeatPassword)
+        return true
+
+//        isNameValid(name) && isAgeValid(age.toInt()) && isEmailFormatValid(email) && isPasswordFormatValid(
+//            password
+//        ) && isPasswordMatching(password, repeatPassword)
     }
 
 

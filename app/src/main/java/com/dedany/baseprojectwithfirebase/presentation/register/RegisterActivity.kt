@@ -81,19 +81,22 @@ class RegisterActivity : AppCompatActivity() {
             this?.etAge?.doOnTextChanged { text, start, before, count ->
                 viewModel?.setAge(text.toString())
             }
-
-            this?.etCountry?.doOnTextChanged { text, start, before, count ->
-                viewModel?.setCountry(text.toString())
+            this?.etEmail?.doOnTextChanged { text, start, before, count ->
+                viewModel?.setEmail(text.toString())
             }
-            this?.etPassword?.doOnTextChanged { text, start, before, count ->
-                viewModel?.setPassword(text.toString())
-            }
-            this?.etRepeatPassword?.doOnTextChanged { text, start, before, count ->
-                viewModel?.setRepeatPassword(text.toString())
-            }
-            this?.btRegister?.setOnClickListener {
-                viewModel?.register()
+                this?.etCountry?.doOnTextChanged { text, start, before, count ->
+                    viewModel?.setCountry(text.toString())
+                }
+                this?.etPassword?.doOnTextChanged { text, start, before, count ->
+                    viewModel?.setPassword(text.toString())
+                }
+                this?.etRepeatPassword?.doOnTextChanged { text, start, before, count ->
+                    viewModel?.setRepeatPassword(text.toString())
+                }
+                this?.btRegister?.setOnClickListener {
+                    viewModel?.register()
+                }
             }
         }
+
     }
-}

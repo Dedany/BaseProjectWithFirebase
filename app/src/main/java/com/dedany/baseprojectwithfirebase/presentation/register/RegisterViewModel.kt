@@ -60,17 +60,17 @@ class RegisterViewModel @Inject constructor(
 
     fun setUsername(name: String) {
         _name.value = name
-        _nameHasError.value = authUseCase.isNameValid(name)
+        _nameHasError.value = !authUseCase.isNameValid(name)
     }
 
     fun setAge(age: String) {
-        val pasedAge = age.toInt()
-        _ageHasError.value = authUseCase.isAgeValid(age.toInt())
+       _age.value = age.toInt()
+        _ageHasError.value = !authUseCase.isAgeValid(age.toInt())
     }
 
     fun setEmail(email: String) {
         _email.value = email
-        _emailHasError.value = authUseCase.isEmailFormatValid(email)
+        _emailHasError.value = !authUseCase.isEmailFormatValid(email)//cuando esta funcion devuelva false , mostrará un error
     }
 
     fun setCountry(country: String) {
@@ -79,14 +79,14 @@ class RegisterViewModel @Inject constructor(
 
     fun setPassword(password: String) {
         _password.value = password
-        _passwordHasError.value = authUseCase.isPasswordFormatValid(password)
+        _passwordHasError.value = !authUseCase.isPasswordFormatValid(password)
     }
 
     fun setRepeatPassword(repeatPassword: String) {
         _repeatPassword.value = repeatPassword
         _password.value?.let { password ->
             _repeatPasswordHasError.value =
-                authUseCase.isAPasswordMatching(password, repeatPassword)
+                !authUseCase.isPasswordMatching(password, repeatPassword)
         }
     }
 
